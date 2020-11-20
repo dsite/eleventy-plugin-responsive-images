@@ -16,9 +16,9 @@ module.exports = function(eleventyConfig, pluginNamespace) {
 				const arraySizes = parameter.sizes.replace(/ /g,'').split(',');
 				const maxSize = Math.max.apply(Math, arraySizes);
 				const baseUrl = `https://res.cloudinary.com/${eleventyConfig.cloudinaryCloudName}/image/fetch/`;
-				const imageSrc = `${baseUrl}q_auto,f_auto,w_${maxSize},a_ignore/${hostname}${parameter.src}`;
+				const imageSrc = `${baseUrl}q_auto,f_auto,a_ignore,w_${maxSize}/${hostname}${parameter.src}`;
 				const srcset = arraySizes.map(width => {
-					return `${baseUrl}q_auto,f_auto,w_${width}/${hostname}${parameter.src} ${width}w`;
+					return `${baseUrl}q_auto,f_auto,a_ignore,w_${width}/${hostname}${parameter.src} ${width}w`;
 				}).join(',');
 
 				return '<img ' +
